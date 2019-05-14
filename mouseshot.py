@@ -5,9 +5,5 @@ pygame.init()
 screen = pygame.display.set_mode((width, height))
 
 def mouseshoot():
-    pygame.init()
-    pygame.display.set_mode((300,200))
-    pygame.display.set_caption('Testing')
-    running = True
-    while running:
-        print (pygame.mouse.get_pos()[0])
+    pygame.mouse.get_pos()[0]
+    pygame.mouse.get_pressed()[0]
