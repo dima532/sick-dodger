@@ -380,7 +380,8 @@ class torture(enemy):
         self.rect= kres0[0].get_rect()
 
     def draw(self,screen):
-        if self.
+        if self.walkcount>=20:
+            self.walkcount=0
         if self.typ==1:
             if self.chargecount<=70/5:
                 screen.blit(tor0l[self.walkcount//5],(self.x,self.y))
@@ -389,7 +390,7 @@ class torture(enemy):
             elif self.chargecount>=70/5*2 and self.chargecount<=70/5*3:
                 screen.blit(tor2l[self.walkcount//5],(self.x,self.y))
             elif self.chargecount>=70/5*3 and self.chargecount<=70/5*4:
-                screen.blit(tor3l[self.walkcount//5],(self.x,self.y))]
+                screen.blit(tor3l[self.walkcount//5],(self.x,self.y))
         if self.typ==2:
             if self.chargecount<=70/5:
                 screen.blit(tor0r[self.walkcount//5],(self.x,self.y))
@@ -398,7 +399,7 @@ class torture(enemy):
             elif self.chargecount>=70/5*2 and self.chargecount<=70/5*3:
                 screen.blit(tor2r[self.walkcount//5],(self.x,self.y))
             elif self.chargecount>=70/5*3 and self.chargecount<=70/5*4:
-                screen.blit(tor3r[self.walkcount//5],(self.x,self.y))]
+                screen.blit(tor3r[self.walkcount//5],(self.x,self.y))
         
             
 
@@ -688,7 +689,7 @@ while running:
                     listos.j+=1
                     timerforport=0
                     if newt==1:
-                        listos.list.append(krest(newx,newy,1))#крест + 1 в список
+                        listos.list.append(krest(newx,newy,r.randint(1,4)))#крест + 1 в список
                     if newt==2:
                         listos.list.append(torture(90,newy,1,newt))
                     b+=1
