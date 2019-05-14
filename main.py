@@ -360,7 +360,7 @@ class krest(enemy):#дочерний класс к "враг": "крестово
         self.chargecount+=1
 
 class torture(enemy):
-    def __init__(self,x,y,a):
+    def __init__(self,x,y,a,b):
         self.x=x
         self.y=y
         if a==1:
@@ -368,6 +368,7 @@ class torture(enemy):
         if a==2:
             self.speed = -2
         self.health = 1
+        self.typ=b
         self.firecount = 0
         self.walkcount = 0
         self.chargecount = 0
@@ -379,7 +380,27 @@ class torture(enemy):
         self.rect= kres0[0].get_rect()
 
     def draw(self,screen):
-        self.wal
+        if self.
+        if self.typ==1:
+            if self.chargecount<=70/5:
+                screen.blit(tor0l[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5 and self.chargecount<=70/5*2:
+                screen.blit(tor1l[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5*2 and self.chargecount<=70/5*3:
+                screen.blit(tor2l[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5*3 and self.chargecount<=70/5*4:
+                screen.blit(tor3l[self.walkcount//5],(self.x,self.y))]
+        if self.typ==2:
+            if self.chargecount<=70/5:
+                screen.blit(tor0r[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5 and self.chargecount<=70/5*2:
+                screen.blit(tor1r[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5*2 and self.chargecount<=70/5*3:
+                screen.blit(tor2r[self.walkcount//5],(self.x,self.y))
+            elif self.chargecount>=70/5*3 and self.chargecount<=70/5*4:
+                screen.blit(tor3r[self.walkcount//5],(self.x,self.y))]
+        
+            
 
 class bullet():#класс для пули
     def __init__(self, x, y, c):
@@ -531,7 +552,7 @@ def redrawGameWindow():#перерисовка окна
     listoz.drawall(screen)
 running = True
 
-def hitself():#РАБОТАЕТ!!! УРЯ!!!
+def hitself():
     myhp.hp-=1
     listoz.list=[]
     listoz.j=-1
@@ -669,7 +690,7 @@ while running:
                     if newt==1:
                         listos.list.append(krest(newx,newy,1))#крест + 1 в список
                     if newt==2:
-                        listos.list.append(torture(newx,newy,1))
+                        listos.list.append(torture(90,newy,1,newt))
                     b+=1
                     someshit=False
                     timerforenemy=0#enemy spawn timer = 0
