@@ -2,12 +2,21 @@ import sys,pygame
 import math
 import time
 from mouseshot import mouseshoot as ms
+from textures import textur as texture
 import random as r
 pygame.init()
 (width, height) = (726, 726)
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Sick dodger")
 #textures
+
+#tx=texture()
+#tx.load(self)
+
+
+
+
+
 walkRight=[pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/1.png')),
 pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/2.png')),
 pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/3.png')),
@@ -233,12 +242,12 @@ class enemy():#родительский класс противников
         self.firecount = 0
         self.walkcount = 0
         self.walkdir=a
-        
+
 class enembulmanager():
     def __init__(self):
         self.list=[]
         self.j=-1
-    
+
     def bulwalk(self, rect):
         j=self.j
         while j>=0:
@@ -248,7 +257,7 @@ class enembulmanager():
                 if self.list[j].typ==2:
                     self.list[j].movegor()
                 self.list[j].rect=pygame.Rect(self.list[j].x,self.list[j].y,32,32)
-            
+
             if self.list[j].x<=0 or self.list[j].x>=width:
                 self.list[j].isexist= False
             elif self.list[j].y<=0 or self.list[j].y>=height:
@@ -269,8 +278,8 @@ class enembulmanager():
         while j>=0:
             self.list[j].draw(screen)
             j-=1
-            
-        
+
+
 class enemymanager():
     def __init__(self):
         self.list=[]
@@ -295,7 +304,7 @@ class enemymanager():
                     self.list[j].speed=-speed
             self.list[j].rect=pygame.Rect(self.list[j].x+self.list[j].lec, self.list[j].y+self.list[j].uc, self.list[j].rc-self.list[j].lec, self.list[j].dc-self.list[j].uc)
             bj2=bj
-            
+
             self.list[j].draw(screen)
             if self.list[j].chargecount>70:
                 spawnkrbul(j)
@@ -309,7 +318,7 @@ class enemymanager():
                 bj2-=1
             j-=1
         return [bj, score]
-            
+
     def enemblit(self, screen):#для прорисовки ВСЕХ врагов, не рабочий вид
         ej=0
         while ej<j:
@@ -342,7 +351,7 @@ class krest(enemy):#дочерний класс к "враг": "крестово
         self.rc=30*con;
         self.uc=0*con;
         self.rect= kres0[0].get_rect()
-        
+
     def draw(self, screen):
         if self.walkcount+1 >= 20:
             self.walkcount = 0
@@ -400,8 +409,8 @@ class torture(enemy):
                 screen.blit(tor2r[self.walkcount//5],(self.x,self.y))
             elif self.chargecount>=70/5*3 and self.chargecount<=70/5*4:
                 screen.blit(tor3r[self.walkcount//5],(self.x,self.y))
-        
-            
+
+
 
 class bullet():#класс для пули
     def __init__(self, x, y, c):
@@ -420,7 +429,7 @@ class bullet():#класс для пули
         self.rc=19*con
         self.uc=2*con
         self.rect= bull[0].get_rect()
-        
+
 
     def draw(self, screen):
         if self.walkcount + 1 >= 20:
@@ -462,8 +471,8 @@ class yedro():
             self.x-=self.speed
         elif self.direct==2:
             self.x+=self.speed
-        
-        
+
+
 
 class player():#класс игрока
     def __init__(self, x, y, a, b):
@@ -536,7 +545,7 @@ def bulcheck(i,bj):#уже рабочая штука для удаления п�
         bj-=1
     return [bj,i]
 
-    
+
 
 def redrawGameWindow():#перерисовка окна
     screen.blit(screen,(0,0))
@@ -566,8 +575,8 @@ def hitself():
 def healself(j):
     if myhp.hp<3:
         myhp.hp+=1
-    
-    
+
+
 
 
 
@@ -679,7 +688,7 @@ while running:
                     newx=r.randint(0,width-60)
                     newy=r.randint(0,height-74)
                     someshit=True
-                    
+
                 if timerforport>=4*timerportsprite:
                     if newt==1:
                         screen.blit(kres0[0],(newx,newy))

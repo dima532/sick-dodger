@@ -1,11 +1,7 @@
 import sys,pygame
 import time
-pygame.init()
-(width, height) = (935, 438)
-screen = pygame.display.set_mode((width, height))
-
 class textur():
-    def __init__(self):
+    def load(self):
         self.walkRight=[pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/1.png')),
         pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/2.png')),
         pygame.transform.scale2x(pygame.image.load('sphere drone/r/ch_0/3.png')),
